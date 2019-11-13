@@ -1,0 +1,94 @@
+﻿@model IEnumerable<MvcEESStore.Models.Receipt>
+
+@{
+    ViewData["Title"] = "Receipts";
+}
+
+    <h1>Receipts</h1>
+
+    <p>
+        <br />
+        <div class="row">
+            <div class=" col-6">
+                <h2 class="text-info">Summary</h2>
+            </div>
+            <div class="col-6 text-right">
+                <a asp-action="Create" class="btn btn-info">  &nbsp; New Receipt</a>
+            </div>
+        </div>
+        <br />
+    </p>
+
+    <form asp-controller="Receipt" asp-action="Index">
+        <p>
+            Tìm hóa đơn theo mã: <input type="text" name="SearchString">
+            <input type="submit" value="Tìm kiếm" />
+        </p>
+    </form>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.maSP)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ngayGiaoDich)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.soLuongSP)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.donGia)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.thanhTieh)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.tongTien)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.maKH)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.tenKH)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.maSP)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ngayGiaoDich)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.soLuongSP)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.donGia)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.thanhTieh)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.tongTien)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.maKH)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.tenKH)
+            </td>
+            <td>
+                <a asp-action="Edit" class=" btn btn-primary" asp-route-id="@item.maHD">Edit</a>
+                <a asp-action="Details" class=" btn btn-info" asp-route-id="@item.maHD">Details</a>
+                <a asp-action="Delete" class=" btn btn-danger" asp-route-id="@item.maHD">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
