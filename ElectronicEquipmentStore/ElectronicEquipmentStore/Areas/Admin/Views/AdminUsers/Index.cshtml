@@ -1,0 +1,75 @@
+﻿@model IEnumerable<ElectronicEquipmentStore.Models.ApplicationUser>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+    <h1>Admin User</h1>
+
+<p>
+    <br />
+    <div class="row">
+        <div class=" col-6">
+            <h2 class="text-info">Admin User List</h2>
+        </div>
+        <div class="col-6 text-right">
+            <a asp-area="Identity" asp-page="/Account/Register" class="btn btn-info">&nbsp; New Admin User</a>
+        </div>
+    </div>
+    <br />
+</p>
+
+<form asp-controller="AdminUsers" asp-action="Index">
+    <p>
+        Tìm user: <input type="text" name="SearchString">
+        <input type="submit" value="Tìm kiếm" />
+    </p>
+</form>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PhoneNumber)
+            </th>
+            <th>
+                Disabled
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PhoneNumber)
+            </td>
+            <td>
+                @if (item.LockoutEnd != null && item.LockoutEnd > DateTime.Now)
+                {
+                    <label>Disable</label>
+                }
+            </td>
+            <td>
+                @if (item.LockoutEnd == null || item.LockoutEnd < DateTime.Now)
+                {
+                    <a asp-action="Edit" class="btn btn-primary" asp-route-id="@item.Id">Edit</a>
+                    <a asp-action="Delete" class=" btn btn-danger" asp-route-id="@item.Id">Delete</a>
+                }
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>

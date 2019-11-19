@@ -1,0 +1,77 @@
+﻿@model ElectronicEquipmentStore.Models.ViewModel.ProductViewModel
+@using ElectronicEquipmentStore.Extensions
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Product</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Product.maSP" class="control-label"></label>
+                <input asp-for="Product.maSP" class="form-control" />
+                <span asp-validation-for="Product.maSP" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Product.tenSP" class="control-label"></label>
+                <input asp-for="Product.tenSP" class="form-control" />
+                <span asp-validation-for="Product.tenSP" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Product.hinhAnh" class="control-label"></label>
+                <input type="file" name="files" class="form-control" />
+
+            </div>
+            <div class="form-group">
+                <label asp-for="Product.soLuongSP" class="control-label"></label>
+                <input asp-for="Product.soLuongSP" class="form-control" />
+                <span asp-validation-for="Product.soLuongSP" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Product.giaKhuyenMai" class="control-label"></label>
+                <input asp-for="Product.giaKhuyenMai" class="form-control" />
+                <span asp-validation-for="Product.giaKhuyenMai" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Product.giaGoc" class="control-label"></label>
+                <input asp-for="Product.giaGoc" class="form-control" />
+                <span asp-validation-for="Product.giaGoc" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Product.trangThai" class="control-label"></label>
+                <input asp-for="Product.trangThai" class="form-control" />
+                <span asp-validation-for="Product.trangThai" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Product.maNSX" class="control-label"></label>
+                <input asp-for="Product.maNSX" class="form-control" />
+                <span asp-validation-for="Product.maNSX" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ProductGroups" class="control-label"></label>
+                <select asp-for="@Model.Product.maNSP" asp-items="Model.ProductGroups.ToSelectListItemProductGroup(Model.Product.maNSP)" class="form-control"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="Categories" class="control-label"></label>
+                <select asp-for="@Model.Product.maDM" asp-items="Model.Categories.ToSelectListItemCategory(Model.Product.maDM)" class="form-control"></select>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,0 +1,108 @@
+﻿@model IEnumerable<ElectronicEquipmentStore.Models.Product>
+
+@{
+    ViewData["Title"] = "Products";
+}
+
+<h1>Products</h1>
+
+<p>
+    <br />
+    <div class="row">
+        <div class=" col-6">
+            <h2 class="text-info">Summary</h2>
+        </div>
+        <div class="col-6 text-right">
+            <a asp-action="Create" class="btn btn-info">  &nbsp; New Product</a>
+        </div>
+    </div>
+    <br />
+</p>
+
+<form asp-controller="Products" asp-action="Index">
+    <p>
+        Tìm sản phẩm: <input type="text" name="SearchString">
+        <input type="submit" value="Tìm kiếm" />
+    </p>
+</form>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.maSP)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.tenSP)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.hinhAnh)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.soLuongSP)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.giaKhuyenMai)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.giaGoc)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.trangThai)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.maNSX)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProductGroup.tenNSP)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Category.tenDM)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.maSP)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.tenSP)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.hinhAnh)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.soLuongSP)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.giaKhuyenMai)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.giaGoc)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.trangThai)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.maNSX)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProductGroup.tenNSP)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Category.tenDM)
+            </td>
+            <td>
+                <a asp-action="Edit" class=" btn btn-primary" asp-route-id="@item.maSP">Edit</a>
+                <a asp-action="Details" class=" btn btn-info" asp-route-id="@item.maSP">Details</a>
+                <a asp-action="Delete" class=" btn btn-danger" asp-route-id="@item.maSP">Delete</a>
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>
