@@ -1,0 +1,26 @@
+<div class="custom-border-bottom py-3">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 mb-0">
+        <a routerLink="">Home</a> <span class="mx-2 mb-0">/</span>
+        <a routerLink="/blog">Blog List</a> <span class="mx-2 mb-0">/</span>
+        <strong class="text-black">Post Detail</strong>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="post-detail">
+  <div class="container">
+    <div class="post-detail__title">
+      <h3>{{ post.name }}</h3>
+    </div>
+    <div class="post-detail__date">
+      <span>Date {{ post.createdAt }}</span>
+    </div>
+
+    <div class="post-detail__desc">
+      <div [innerHTML]="post.content"></div>
+    </div>
+  </div>
+</div>
