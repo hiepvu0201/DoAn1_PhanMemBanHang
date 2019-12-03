@@ -7,9 +7,11 @@
   Run command: npm install -g @angular/cli
   
   2.1) Run store
-    Run command:  cd store
+    Run command:  npm install
+                  cd store
                   ng serve
                   
   2.2) Run admin
-    Run command:  cd admin
+    Run command:  npm install
+                  cd admin
                   ng serve --port 4001
